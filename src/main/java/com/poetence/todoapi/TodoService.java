@@ -3,6 +3,7 @@ package com.poetence.todoapi;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicLong;
 
@@ -15,8 +16,8 @@ public class TodoService {
         this.counter = new AtomicLong(0);
     }
 
-    public Map<Long, Todo> getTodos() {
-        return Map.copyOf(todos);
+    public List<Todo> getTodos() {
+        return Map.copyOf(todos).values().stream().toList();
     }
     public Todo getTodo(Long id) {
         if (this.todos.containsKey(id)) {
